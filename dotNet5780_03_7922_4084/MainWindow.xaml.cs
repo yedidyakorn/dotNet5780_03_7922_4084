@@ -20,6 +20,7 @@ namespace dotNet5780_03_7922_4084
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Host currentHost;
         List<Host> hostsList = new List<Host>
         {
             new Host()
@@ -126,5 +127,23 @@ namespace dotNet5780_03_7922_4084
             cbHostList.DisplayMemberPath = "HostName";
             cbHostList.SelectedIndex = 0;
         }
+
+        private void CbHostList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            InitializeHost(cbHostList.SelectedIndex);
+        }
+        private void InitializeHost(int index)
+        {
+            MainGrid.Children.RemoveRange(1, 3);
+            currentHost = hostsList[index];
+            UpGrid.DataContext = currentHost;
+            for (int i = 0; i < currentHost._units.Count; i++)
+            {
+                HostingUnitUserControl a = new HostingUnitUserControl(currentHost._units[i]);
+                MainGrid.Children.Add(a);
+                Grid.SetRow(a, i + 1);
+            }
+        }
     }
 }
+
