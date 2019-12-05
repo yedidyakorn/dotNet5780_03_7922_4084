@@ -50,8 +50,8 @@ namespace dotNet5780_03_7922_4084
             vbCalendar.Child = MyCalendar;// הצגה של החלון הנוכחי שיצרנו
             SetBlackOutDates();
             imageIndex = 0;
-            vbImage.Width = 75;
-            vbImage.Height = 75;
+            vbImage.Width = 100;
+            vbImage.Height = 100;
             vbImage.Stretch = Stretch.Fill;
             UserControlGrid.Children.Add(vbImage);
             Grid.SetColumn(vbImage, 2);
@@ -91,8 +91,8 @@ namespace dotNet5780_03_7922_4084
         }
         private void vbImage_MouseLeave(object sender, MouseEventArgs e)
         {
-            vbImage.Width = 75;
-            vbImage.Height = 75;
+            vbImage.Width = 100;
+            vbImage.Height = 100;
         }
         private void vbImage_MouseEnter(object sender, MouseEventArgs e)
         {
@@ -107,5 +107,6 @@ namespace dotNet5780_03_7922_4084
             MyImage = CreateViewImage();
             vbImage.Child = MyImage;
         }
+
     }
 }
